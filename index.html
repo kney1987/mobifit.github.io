@@ -51,6 +51,29 @@
     </div>
   </header>
 
+  <div id="cookie-banner" class="fixed bottom-5 left-1/2 z-50 hidden w-[95%] max-w-3xl -translate-x-1/2 rounded-2xl bg-white p-6 shadow-2xl ring-1 ring-slate-200">
+    <div class="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+        <div>
+            <h3 class="text-lg font-bold text-mobiblue">
+                Cookies
+            </h3>
+            <p class="mt-2 text-sm leading-6 text-slate-600">
+                Deze website gebruikt uitsluitend functionele cookies om de website correct te laten werken.
+                Er worden geen tracking- of marketingcookies geplaatst.
+                Lees onze
+                <a href="privacy.html" class="font-semibold text-mobiblue underline">
+                    privacyverklaring
+                </a>.
+            </p>
+        </div>
+        <button
+            id="acceptCookies"
+            class="rounded-full bg-mobiblue px-6 py-3 font-semibold text-white hover:bg-mobiblue2">
+            Begrepen
+        </button>
+    </div>
+  </div>
+
   <main id="top">
     <section class="relative overflow-hidden bg-mobiblue text-white">
       <div class="absolute inset-0 opacity-20">
@@ -259,8 +282,29 @@
     </section>
   </main>
 
-  <footer class="bg-mobiblue2 px-4 py-8 text-center text-sm text-white/65 sm:px-6 lg:px-8">
-    <p>© Mobifit Dessel · Groepsfitness voor 50-plussers en senioren</p>
-  </footer>
+  <footer class="bg-mobiblue2 px-4 py-8 text-center text-sm text-white/65">
+    <p>© Mobifit</p>
+    <div class="mt-3 flex justify-center gap-6">
+        <a href="privacy.html" class="hover:text-white">
+            Privacyverklaring
+        </a>
+        <a href="#" class="hover:text-white">
+            Cookiebeleid
+        </a>
+    </div>
+</footer>
+
+  <script>
+    const banner = document.getElementById("cookie-banner");
+
+    if (!localStorage.getItem("cookiesAccepted")) {
+        banner.classList.remove("hidden");
+    }
+
+    document.getElementById("acceptCookies").addEventListener("click", () => {
+        localStorage.setItem("cookiesAccepted", "true");
+        banner.classList.add("hidden");
+    });
+  </script>
 </body>
 </html>
